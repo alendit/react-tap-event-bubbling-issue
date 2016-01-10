@@ -3,6 +3,7 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: [
+    'webpack/hot/only-dev-server',
     './index.js',
   ],
   output: {
@@ -19,7 +20,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loaders: ['babel'],
+        loaders: ['react-hot', 'babel'],
       },
     ],
   },
@@ -27,6 +28,7 @@ module.exports = {
   ],
   devtool: 'inline-source-map',
   devServer: {
+    hot: true,
     contentBase: path.join(__dirname, 'dist'),
     // proxy: {
     //   '*': 'http://127.0.0.1:' + (process.env.PORT || 3000)
